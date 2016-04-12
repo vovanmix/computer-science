@@ -14,3 +14,15 @@ while($a->count()){
   $x = $a->pop();
   echo "{$x} ";
 }
+
+
+
+$q = new SplStack();
+$q->push(1);
+$q->push(2);
+$q->push(3);
+$q->setIteratorMode(SplDoublyLinkedList:: IT_MODE_DELETE | SplDoublyLinkedList::IT_MODE_LIFO);
+
+foreach($q as $x){
+    echo $x;
+}
