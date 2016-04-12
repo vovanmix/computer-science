@@ -8,6 +8,7 @@ $a->push('1');
 $a->push('2');
 $a->push('3');
 
-while($x = $a->pop()){
-  echo "{$x} "
+while($a->count()){
+  $x = $a->pop();
+  echo "{$x} ";
 }
