@@ -8,8 +8,8 @@ $q = new SplQueue();
 $q->enqueue(1);
 $q->enqueue(2);
 $q->enqueue(3);
+$q->setIteratorMode(SplDoublyLinkedList::IT_MODE_DELETE);
 
-while($q->count()){
-  $x = $q->dequeue();
-  echo "{$x}";
+foreach($q as $x){
+    echo $x;
 }
