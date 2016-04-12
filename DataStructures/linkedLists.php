@@ -28,3 +28,65 @@ while($a->count()){
 }
 
 echo "{$a->count()}";
+
+# 2. Test implementation
+class ListItem{
+  private $next = null;
+  private $previous = null;
+  private $value = null;
+  
+  public function __construct($value){
+    $this->value = $value;
+  }
+  
+  public function getValue(){
+    return $this->value;
+  }
+  
+  public function setNext(ListItem $item){
+    $this->next = $item;
+  }
+  
+  public function setPrevious(ListItem $item){
+    $this->previous = $item;
+  }
+  
+  public function getNext(){
+    return $this->next;
+  }
+  
+  public function getPrevious(ListItem $item){
+    return $this->previous;
+  }
+}
+
+class DoublyLinkedList{
+  
+  private $_head = null;
+  private $_tail = null;
+  
+  public function push($value){
+    $item = new ListItem($value);
+    if($this->_tail){
+      $this->_tail->setNext($item);
+      $item->setPrevious( $this->_tail);
+    }
+    else{
+      $this->_head = &$item;
+    }
+    $this->_tail = &$item;
+  }
+  
+  public function unshift($value){
+    //todo
+  }
+  
+  public function shift(){
+    //todo
+  }
+  
+  public function pop(){
+    return $this->_tail->getValue();
+    $this->_tail = &$this->_tail->getPrevious();
+  }
+}
