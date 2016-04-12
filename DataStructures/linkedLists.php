@@ -30,8 +30,6 @@ while($a->count()){
 echo "{$a->count()}";
 
 # 2. Test implementation
-<?php
-
 class ListItem{
   private $next = null;
   private $previous = null;
