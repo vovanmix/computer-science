@@ -30,6 +30,8 @@ while($a->count()){
 echo "{$a->count()}";
 
 # 2. Test implementation
+<?php
+
 class ListItem{
   private $next = null;
   private $previous = null;
@@ -55,11 +57,10 @@ class ListItem{
     return $this->next;
   }
   
-  public function getPrevious(ListItem $item){
+  public function getPrevious(){
     return $this->previous;
   }
 }
-
 class DoublyLinkedList{
   
   private $_head = null;
@@ -74,7 +75,7 @@ class DoublyLinkedList{
     else{
       $this->_head = &$item;
     }
-    $this->_tail = &$item;
+    $this->_tail = $item;
   }
   
   public function unshift($value){
@@ -86,7 +87,38 @@ class DoublyLinkedList{
   }
   
   public function pop(){
-    return $this->_tail->getValue();
-    $this->_tail = &$this->_tail->getPrevious();
+    if($this->_tail){
+        $value = $this->_tail->getValue();
+        $this->_tail = $this->_tail->getPrevious();
+    }
+    else{
+        $value = null;
+    }
+    return $value;
   }
+}
+
+
+$a = new DoublyLinkedList();
+$a->push('hello');
+$a->push('kitty');
+$a->push(',');
+$a->push('how');
+$a->push('are');
+$a->push('you');
+$a->push('?');
+
+while($x = $a->pop()){
+  echo "${x} ";
+}
+$a->push('hello');
+$a->push('kitty');
+$a->push(',');
+$a->push('how');
+$a->push('are');
+$a->push('you');
+$a->push('?');
+
+while($x = $a->pop()){
+  echo "${x} ";
 }
