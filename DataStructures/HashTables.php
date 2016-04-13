@@ -1,4 +1,12 @@
 <?php
+
+# Hash table is a structure that stores kay-value pairs
+# It's implemented as a simple array with integer indexes, where indexes could be calculated with a hash of a key
+# Multiple keys could have the same hash, and we store some other structure in each cell (bucket) like a linked list
+# It's fast to find a value because we jump to the cell and then loop throug the snall list
+# Associative arrays or dictionaries are hash tables, sometimes extended with some additional traits
+
+
 class HashTable {
     
     private $numberOfBuckets = 1000;
@@ -6,21 +14,29 @@ class HashTable {
     private $data = [];
     
     private function hashKey($key){
-        return hexdec( md5($key) ) % $this->numberOfBuckets;
+        $hash = md5($key);
+        $substring = substr($hash, 0,16);
+        $finalInt = hexdec($substring);
     }
     
-    private function getBucketValues($key){
+    private function getBucketValues($key, $create=false){
         $hash = $this->hashKey($key);
-        $bucketValues = $this->data[$hash];
-        if(empty($bucketValues)){
+        echo ($hash);
+        if(isset($this->data[$hash])){
+            $bucketValues = $this->data[$hash];
+        }
+        else{
             $bucketValues = new SplDoublyLinkedList();
+            if($create){
+                $this->data[$hash] = $bucketValues;
+            }
         }
         return $bucketValues;
     }
     
     public function add($key, $value){
-        $bucketValues = $this->getBucketValues($key);
-        $valueHolder = new StdClass;
+        $bucketValues = $this->getBucketValues($key, true);
+        $valueHolder = new StdClass();
         $valueHolder->key = $key;
         $valueHolder->value = $value;
         $bucketValues->push($valueHolder);
@@ -36,3 +52,10 @@ class HashTable {
         return null;
     }
 }
+
+$myHT = new HashTable();
+$myHT->add("name", "John");
+$myHT->add("age", 30);
+
+echo "{$myHT->get("name")} is {$myHT->get('age')} years old";
+
