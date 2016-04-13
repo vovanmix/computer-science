@@ -17,11 +17,11 @@ class HashTable {
         $hash = md5($key);
         $substring = substr($hash, 0,16);
         $finalInt = hexdec($substring);
+        return $finalInt % $this->numberOfBuckets;
     }
     
     private function getBucketValues($key, $create=false){
         $hash = $this->hashKey($key);
-        echo ($hash);
         if(isset($this->data[$hash])){
             $bucketValues = $this->data[$hash];
         }
