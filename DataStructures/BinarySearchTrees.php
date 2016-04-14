@@ -13,8 +13,8 @@ class TreeNode{
     
     private $left = null;
     private $right = null;
-    private $key = null;
-    private $value = null;
+    public $key = null;
+    public $value = null;
 
     public function __construct($key, $value){
         $this->key = $key;
