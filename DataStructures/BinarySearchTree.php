@@ -4,6 +4,9 @@
 # children are named Left and Right, where the key of the Left child is always smaller 
 # than the key of it's parent, and the key of the Right child is bigger
 # When performing search, we traverse through nodes and compare the keys
+# Structure of a tree depends completely on the order of filling.
+# Unbalanced tree - when one branch has much more childs than others, 
+# and search of values located in that branch will take significantly more time.
 
 
 class TreeNode{
