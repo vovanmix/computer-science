@@ -34,15 +34,15 @@ class Heap {
 		
 		$rootNode = array_shift($this->heap);
 		
-    if(!$this->isEmpty()){
-    	// move last item into the root so the heap is
-      // no longer disjointed
-      
-      $last = array_pop($this->heap);
-      array_unshift($last);
-      
-      $this->adjust(0);
-    }
+		if(!$this->isEmpty()){
+			// move last item into the root so the heap is
+			// no longer disjointed
+			
+			$last = array_pop($this->heap);
+			array_unshift($last);
+			
+			$this->adjust(0);
+		}
 	}
 	
 	public function count(){
