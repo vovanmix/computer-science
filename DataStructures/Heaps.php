@@ -35,43 +35,72 @@ class Heap {
 		$rootNode = array_shift($this->heap);
 		
 		if(!$this->isEmpty()){
-			// move last item into the root so the heap is
-			// no longer disjointed
-			
-			$last = array_pop($this->heap);
-			array_unshift($last);
+			// move last item into the root so the heap is no longer disjointed
+			$lastNode = array_pop($this->heap);
+			array_unshift($lastNode);
 			
 			$this->adjust(0);
 		}
+		return $rootNode;
 	}
 	
 	public function count(){
 		return count($this->heap);
 	}
 	
-	
 	protected function compare($item1, $item2){
 		if($item1 == $item2){
 			return 0;
 		}
 		
-		$compareValue =  ($item1 > $item2 ? 1 : -1);
+		$compareValue =  ($item1[0] > $item2[0] ? 1 : -1);
 		if($this->isMinHeap){
 			$compareValue *= -1;
 		}
 		return $compareValue;
 	}
 	
-	protected function adjuct($index){
-		
+	protected function adjuct($rootIndex){
+		// we've gone as far as we can down the tree if root is a leaf
+		if(!$his->isLeaf($rootIndex)){
+			$leftIndex = (2 * $rootIndex) + 1;
+			$rightIndex = (2 * $rootIndex) + 2;
+			
+			//if root is less/bigger than either of it's children
+			$h = $this->heap;
+			if(
+				(isset($h[$leftIndex]) && $this->compare($h[$rootIndex], $h[$leftIndex]) < 0) ||
+				(isset($h[$rightIndex]) && $this->compare($h[$rootIndex], $h[$rightIndex]) < 0)
+				){
+				//find the larger/smaller child
+				if(isset($h[$leftIndex]) && isset($h[$rightIndex])){
+					$j = ($this->compare($h[$leftIndex], $h[$rightIndex]) >= 0) ? $leftIndex : $rightIndex;
+				}
+				elseif(isset($h[$leftIndex])){
+					$j = $leftIndex; // left child only
+				}
+				else{
+					$j = $rightIndex; // rigth child only
+				}
+				
+				//swap places with root
+				list($this->heap[$rootIndex], $this->heap[$j]) = [$this->heap[$j], $this->heap[$rootIndex]];
+				
+				//recursively adjust semiheap rooted at new node j
+				$this->adjust($j);
+			}
+			// if not, we stop
+		}
+		//or we stop because the heap is optimized
 	}
 	
-	protected function inLeaf($node){
-		
+	protected function isLeaf($index){
+		// there will always be 2n + 1 nodes in the sub-heap
+		return ((2 * $index) + 1) > $this->count();
 	}
 	
-	protected function inEmpty(){
-		
+	protected function isEmpty(){
+		return empty($this->heap);
 	}
 	
 }
