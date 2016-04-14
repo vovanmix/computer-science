@@ -11,6 +11,8 @@
 # suited to node insertions (as in our example) and sub-tree cloning (grafting). In-order traversal is commonly used 
 # for searching binary trees, while post-order is better suited for deleting (pruning) nodes.
 
+// http://www.sitepoint.com/data-structures-2/
+
 class BinaryNode
 {
     public $value;    // contains the node item
