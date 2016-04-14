@@ -8,15 +8,13 @@
 # Very useful for implementing Priority queues
 
 
-// http://www.sitepoint.com/data-structures-3/
-
-// todo: Graphs http://www.sitepoint.com/data-structures-4/
+// Modified version of http://www.sitepoint.com/data-structures-3/
 
 class Heap {
 	
 	protected $heap;
 	
-	protected $isMinHeap = false;
+	protected $isMinHeap = false; // max heap by default
 	
 	public function __construct($isMinHeap = false){
 		$this->heap = array();
@@ -25,6 +23,8 @@ class Heap {
 	
 	public function add($key, $value){
 		$this->heap[] = [$key, $value];
+		$this->adjustBottomToTop($this->lastIndex());
+		$this->adjustTopToBottom(0);
 	}
 	
 	public function extract(){
@@ -37,15 +37,28 @@ class Heap {
 		if(!$this->isEmpty()){
 			// move last item into the root so the heap is no longer disjointed
 			$lastNode = array_pop($this->heap);
-			array_unshift($lastNode);
+			array_unshift($lastNode, $lastNode);
 			
-			$this->adjust(0);
+			$this->adjustTopToBottom(0);
 		}
-		return $rootNode;
+		return $rootNode[1];
 	}
 	
 	public function count(){
 		return count($this->heap);
+	}
+	
+	public function lastIndex(){
+	    if($this->count() == 0){
+	        return 0;
+	    }
+	    return $this->count() - 1;
+	}
+	
+	protected function indexOfParent($index){
+	    $z = ($index % 2 > 0) ? 1 : 2;
+	    $x = ($index - $z) / 2;
+	    return ($x >= 0) ? $x : 0;
 	}
 	
 	protected function compare($item1, $item2){
@@ -57,12 +70,27 @@ class Heap {
 		if($this->isMinHeap){
 			$compareValue *= -1;
 		}
+		
 		return $compareValue;
 	}
 	
-	protected function adjuct($rootIndex){
+	protected function adjustBottomToTop($nodeIndex){
+	    if($nodeIndex != 0){
+	        $parentIndex = $this->indexOfParent($nodeIndex);
+	        
+	        $h = $this->heap;
+	        
+	        if( $this->compare($h[$parentIndex], $h[$nodeIndex]) < 0 ){
+	            list($this->heap[$parentIndex], $this->heap[$nodeIndex]) = [$this->heap[$nodeIndex], $this->heap[$parentIndex]];
+	            
+	            $this->adjustBottomToTop($parentIndex);
+	        }
+	    }
+	}
+	
+	protected function adjustTopToBottom($rootIndex){
 		// we've gone as far as we can down the tree if root is a leaf
-		if(!$his->isLeaf($rootIndex)){
+		if(!$this->isLeaf($rootIndex)){
 			$leftIndex = (2 * $rootIndex) + 1;
 			$rightIndex = (2 * $rootIndex) + 2;
 			
@@ -87,7 +115,7 @@ class Heap {
 				list($this->heap[$rootIndex], $this->heap[$j]) = [$this->heap[$j], $this->heap[$rootIndex]];
 				
 				//recursively adjust semiheap rooted at new node j
-				$this->adjust($j);
+				$this->adjustTopToBottom($j);
 			}
 			// if not, we stop
 		}
@@ -104,3 +132,39 @@ class Heap {
 	}
 	
 }
+
+$maxHeap = new Heap();
+$maxHeap->add(1, 'first');
+$maxHeap->add(3, 'second');
+$maxHeap->add(2, 'third');
+$maxHeap->add(4, 'fourth');
+$maxHeap->add(5, 'fifth');
+$maxHeap->add(8, 'sixth');
+$maxHeap->add(6, 'seventh');
+$maxHeap->add(7, 'eighth');
+
+//print_r($maxHeap);die();
+
+echo $maxHeap->extract()."\r\n"; //sixth
+echo $maxHeap->extract()."\r\n"; //eighth
+$maxHeap->add(10, 'nineth');
+echo $maxHeap->extract()."\r\n"; //nineth
+
+echo "\r\n";
+
+$minHeap = new Heap(true);
+$minHeap->add(10, 'first');
+$minHeap->add(3, 'second');
+$minHeap->add(7, 'third');
+$minHeap->add(4, 'fourth');
+$minHeap->add(5, 'fifth');
+$minHeap->add(9, 'sixth');
+$minHeap->add(1, 'seventh');
+$minHeap->add(6, 'eighth');
+
+// print_r($minHeap);die();
+
+echo $minHeap->extract()."\r\n"; //seventh
+echo $minHeap->extract()."\r\n"; //second
+$minHeap->add(2, 'nineth');
+echo $minHeap->extract()."\r\n"; //nineth
