@@ -5,6 +5,7 @@
 # than the key of it's parent, and the key of the Right child is bigger
 # When performing search, we traverse through nodes and compare the keys
 
+
 class TreeNode{
     
     private $left = null;
@@ -54,24 +55,26 @@ class TreeNode{
     }
     
     public function find($key){
-        if($key == $this->key){
+        if($key === $this->key){
             return $this->value;
         }
         elseif($key > $this->key){
-            $this->right->find($key);
+        	if($this->right !== null){
+	            return $this->right->find($key);
+        	}
+        	else{
+        		return false;
+        	}
         }
         elseif($key < $this->key){
-            $this->left->find($key);
+        	if($this->left !== null){
+            	return $this->left->find($key);
+        	}
+        	else{
+        		return false;
+        	}
         }
     }
-    
-    // public function getLeft(){
-    //     return $this->left;
-    // }
-    
-    // public function getRight(){
-    //     return $this->right;
-    // }
 }
 
 
@@ -100,3 +103,19 @@ class BinarySearchTree {
     }
     
 }
+
+$myBT = new BinarySearchTree();
+
+$myBT->add(50, "first");
+$myBT->add(25, "second");
+$myBT->add(100, "third");
+$myBT->add(10, "fourth");
+$myBT->add(30, "fifth");
+$myBT->add(1000, "sixth");
+$myBT->add(75, "seventh");
+$myBT->add(2000, "eighth");
+$myBT->add(3000, "nineth");
+
+var_dump( $myBT->get(3000) );
+var_dump( $myBT->get(10) );
+var_dump( $myBT->get(1230) );
