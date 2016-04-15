@@ -50,17 +50,17 @@ class Dijkstra {
         $best_estimates[$source] = 0;
         
         while(!$q->isEmpty()){//while there's something in the queue
-            //extract a vertex with a min (always on the top of the queue)
-            $min_cost_vertex = $q->extract();
-            if(!empty($this->graph[$min_cost_vertex])){
-                //"relax" each adjacent vertex
+            //extract a vertex with a minimum cost (always on the top of the queue)
+            $min_cost_vertex = $q->extract(); //this is a currently unoptimized vertext with the minimal cost of travel in some 1 direction
+            if(!empty($this->graph[$min_cost_vertex])){  // if there're any adjacent vertices
+                //optimize the route to each adjacent vertex
                 foreach($this->graph[$min_cost_vertex] as $vertex => $cost){
                     //get an alternate route length to adjacent neighbor
-                    $alt = $best_estimates[$min_cost_vertex] + $cost;
+                    $alternate_cost = $best_estimates[$min_cost_vertex] + $cost; //it will be infinity unless the route was started from the $source
                     //if alternate route is shorter
-                    if($alt < $best_estimates[$vertex]){
-                        $best_estimates[$vertex] = $alt; // update minimum possible length to vertex
-                        $predecessors[$vertex] = $min_cost_vertex; //add neighbor to predecessors for vertex
+                    if($alternate_cost < $best_estimates[$vertex]){
+                        $best_estimates[$vertex] = $alternate_cost; // update  - the minimuc cost to reach this vertex is this
+                        $predecessors[$vertex] = $min_cost_vertex; // update - the best predecessor to reach this vertex is this
                     }
                 }
             }
