@@ -12,7 +12,7 @@ $graph = array(
   'F' => array('A' => 6, 'C' => 3, 'D' => 2, 'E' => 5),
 );
 
-# Dijkstra algorith: examin each edge between all possible pairs of vertices starting from 
+# Dijkstra algorithm: examin each edge between all possible pairs of vertices starting from 
 # the source node and maintaining an updated set of vertices with the shortest total distance until 
 # the target node is reached, or not reached, whichever the case may be.
 
