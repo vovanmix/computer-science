@@ -17,7 +17,7 @@ $graph = array(
 # the target node is reached, or not reached, whichever the case may be.
 
 # implementation using a PriorityQueue to maintain a list of all “unoptimized” vertices:
-
+// todo: this implementation is from http://www.sitepoint.com/data-structures-4/ and it seems wierd
 
 class Dijkstra {
     
