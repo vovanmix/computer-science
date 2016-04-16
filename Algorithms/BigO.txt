@@ -1,4 +1,5 @@
 ## !!! http://bigocheatsheet.com/ !!! ##
+https://en.wikipedia.org/wiki/Sorting_algorithm#Comparison_of_algorithms
 
 // https://en.wikipedia.org/wiki/Exponentiation
 // https://en.wikipedia.org/wiki/Logarithm
@@ -30,6 +31,7 @@ Array operations:
 immutable arrays are much more efficient (less overhead). better to create of fixed size ot convert to immutabale when it'll never change anymore
 
 http://bigocheatsheet.com/
+https://en.wikipedia.org/wiki/Sorting_algorithm#Comparison_of_algorithms
 
 Strings:
 - strings are usually immutable, and concatenation is a creating of a new string. Dangerous in loops
