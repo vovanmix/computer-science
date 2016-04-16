@@ -10,7 +10,9 @@ https://en.wikipedia.org/wiki/Sorting_algorithm#Comparison_of_algorithms
 // http://science.slc.edu/~jmarshall/courses/2002/spring/cs50/BigO/
 // http://bigocheatsheet.com/
 // https://en.wikipedia.org/wiki/Best,_worst_and_average_case
-// http://www.lynda.com/search?q=%22Big-O%22
+
+
+// https://www.google.com/search?q=big+o+complexity+video+course&oq=big+o+complexity+video+course&aqs=chrome..69i57.9775j0j4&sourceid=chrome&ie=UTF-8
 
 // http://www.cs.odu.edu/~price/cs451/Lectures/04mgmt/costest/costest_htsu3.html
 
