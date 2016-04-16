@@ -7,6 +7,8 @@
 // https://en.wikipedia.org/wiki/Best,_worst_and_average_case
 // http://www.lynda.com/search?q=big+o
 
+// http://www.cs.odu.edu/~price/cs451/Lectures/04mgmt/costest/costest_htsu3.html
+
 O describes how ( running time ) depends on a ( size ) of data it's working with
 O(1) - constant time
 O(log n) - never have to look at all of the input; They usually work by discarding large chunks of unexamined input with each step; divide-and-conquer, looking up people in a phone book
