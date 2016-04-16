@@ -1,3 +1,5 @@
+// https://en.wikipedia.org/wiki/Exponentiation
+// https://en.wikipedia.org/wiki/Logarithm
 
 // http://stackoverflow.com/questions/2307283/what-does-olog-n-mean-exactly
 // http://science.slc.edu/~jmarshall/courses/2002/spring/cs50/BigO/
