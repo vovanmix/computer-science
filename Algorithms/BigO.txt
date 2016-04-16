@@ -1,3 +1,5 @@
+## !!! http://bigocheatsheet.com/ !!! ##
+
 // https://en.wikipedia.org/wiki/Exponentiation
 // https://en.wikipedia.org/wiki/Logarithm
 
