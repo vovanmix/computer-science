@@ -21,6 +21,7 @@ O(n^2) - quadratic time (usually loop in a loop, like compare each value to all 
 O(n!) or O(n · n!) - (Bogosort). Traveling salesman in brute force. The algorithm successively generates (random?) permutations of its input until it finds one that is sorted.
 O(n^n) - 
 
+different data structures have different operation costs
 
 Array operations:
 - direct indexing array[112] O(1)
@@ -28,23 +29,7 @@ Array operations:
 - sorting sort(array) O(n log n)
 immutable arrays are much more efficient (less overhead). better to create of fixed size ot convert to immutabale when it'll never change anymore
 
-different data structures have different operation costs
-
-Queue operations:
-- ...
-- ...
-
-Linked list operations:
-- ...
-- ...
-
-Stacks operations:
-- ...
-- ...
-
-Heaps operations:
-- ...
-- ...
+http://bigocheatsheet.com/
 
 Strings:
 - strings are usually immutable, and concatenation is a creating of a new string. Dangerous in loops
