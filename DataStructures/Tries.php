@@ -123,3 +123,10 @@ var_dump($trie->contains('abs'));
 var_dump($trie->contains('allocation'));
 var_dump($trie->contains('trie'));
 
+echo "---- \r\n";
+
+var_dump($trie->isPrefix('also'));
+var_dump($trie->isPrefix('ass'));
+var_dump($trie->isPrefix('abs'));
+var_dump($trie->isPrefix('allocation'));
+var_dump($trie->isPrefix('tr'));
