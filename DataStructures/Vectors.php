@@ -14,5 +14,7 @@
 # - use dynamic allocation to allow the internal array to be flexible in size
 # - handle boundary issues of the array (error checking for out-of-bounds indices).
 #
+# Disadvantages:  Inserts and Deletes are typically slow, since they may require shifting many elements to consecutive array slots
+#
 # When we're extending the Vector size, we create a new array and copy all elements over to it
 # extentions happen with a frequency of power of 2
