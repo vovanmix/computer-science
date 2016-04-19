@@ -29,20 +29,22 @@ class TrieNode {
     protected $is_a_word = false;
     protected $children = [];
     
-    public function __construct($is_a_word){
+    public function setIsAWord($is_a_word){
         $this->is_a_word = $is_a_word;
     }
     
     public function add($word){
         $letter = substr($word, 0, 1);
-        $new_node = new TrieNode($is_a_word);
-        $this->children[$letter] = $new_node;
+        if(!isset($this->children[$letter])){
+            $this->children[$letter] = new TrieNode();
+        }
+        $child_node = $this->children[$letter];
         if(strlen($word) > 1){
             $remaining_word = substr($word, 1);
-            $new_node->add($remaining_word);
+            $child_node->add($remaining_word);
         }
         else{
-            $this->is_a_word = true;
+            $child_node->setIsAWord(true);
         }
     }
     
@@ -58,7 +60,9 @@ class TrieNode {
             }
         }
         else{ //this is the last letter of the word
-            return $this; // we return this node because it contains all necessary data
+            if(isset($this->children[$letter])){
+                return $this->children[$letter]; // we return that node because it contains all necessary data
+            }
         }
     }
     
@@ -76,8 +80,8 @@ class Trie implements Vocabulary {
     
     protected $head = null;
     
-    public function __construct($is_a_word){
-        $this->head = new TrieNode(false);
+    public function __construct(){
+        $this->head = new TrieNode();
     }
     
     public function add($word){
@@ -95,7 +99,7 @@ class Trie implements Vocabulary {
     }
     
     public function contains($word){
-        $node = $this->head->find($prefix);
+        $node = $this->head->find($word);
         if(!empty($node)){
             if($node->isAWord()){
                 return true;
@@ -104,4 +108,20 @@ class Trie implements Vocabulary {
         return false;
     }
 }
+
+
+$trie = new Trie();
+$trie->add('tree');
+$trie->add('trie');
+$trie->add('algo');
+$trie->add('assoc');
+$trie->add('ass');
+$trie->add('all');
+$trie->add('also');
+
+var_dump($trie->contains('also'));
+var_dump($trie->contains('ass'));
+var_dump($trie->contains('abs'));
+var_dump($trie->contains('allocation'));
+var_dump($trie->contains('trie'));
 
