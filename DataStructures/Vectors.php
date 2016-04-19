@@ -8,5 +8,7 @@
 # grows by doubling its allocated space (rather than incrementing it) and often has more space allocated to it at any one time 
 # than it needs. This is because reallocating memory can sometimes be an expensive operation.
 # 
+# A data structure that stores items of the same type, and is based on storage in an array
+#
 # When we're extending the Vector size, we create a new array and copy all elements over to it
 # extentions happen with a frequency of power of 2
