@@ -1,7 +1,5 @@
 <?php
 
-# I doubt that the algorithm is correct
-
 function mergeSortedArrays($a, $b){
     $n = count($a) + count($b);
     $output = [];
