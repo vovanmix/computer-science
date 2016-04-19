@@ -12,6 +12,44 @@
 # The basic concept is to visit a node, then push all of the nodes to be visited onto the stack. 
 # To find the next node to visit we simply pop a node of the stack
 
+$graph = array(
+  'A' => array('B', 'F'),
+  'B' => array('A', 'D', 'E'),
+  'C' => array('F'),
+  'D' => array('B', 'E'),
+  'E' => array('B', 'D', 'F'),
+  'F' => array('A', 'E', 'C'),
+);
+
 class DepthFirstSearch {
 
+    protected $praph;
+    protected $visited = [];
+    
+    // receives graph in an adjacency list format
+    public function __construct(Array $graph){
+        $this->graph = $graph;
+    }
+    
+    function getAllAccessibleNodes($origin){
+        $this->visited = [];
+        $this->traverseAdjacentNodes($origin);
+        
+        return array_keys($this->visited);
+    }
+    
+    private function traverseAdjacentNodes($origin){
+        $this->visited[$origin] = true;
+        
+        $children = $this->graph[$origin];
+        foreach($children as $child){
+            if(!isset($this->visited[$child])){
+                $this->traverseAdjacentNodes($child);
+            }
+        }
+    }
 }
+
+
+$g = new DepthFirstSearch($graph);
+print_r($g->getAllAccessibleNodes("A"));
