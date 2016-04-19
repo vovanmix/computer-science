@@ -9,6 +9,10 @@
 # than it needs. This is because reallocating memory can sometimes be an expensive operation.
 # 
 # A data structure that stores items of the same type, and is based on storage in an array
+# 
+# By encapsulating an array into a class (a vector class), we can
+# - use dynamic allocation to allow the internal array to be flexible in size
+# - handle boundary issues of the array (error checking for out-of-bounds indices).
 #
 # When we're extending the Vector size, we create a new array and copy all elements over to it
 # extentions happen with a frequency of power of 2
