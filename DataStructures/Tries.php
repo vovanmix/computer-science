@@ -46,6 +46,30 @@ class TrieNode {
         }
     }
     
+    public function find($word){
+        $letter = substr($word, 0, 1);
+        if(strlen($word) > 1){
+            if(isset($this->children[$letter])){ // continue recursive search down the tree
+                $remaining_word = substr($word, 1);
+                return $this->children[$letter]->find($remaining_word);
+            }
+            else{
+                return false;
+            }
+        }
+        else{ //this is the last letter of the word
+            return $this; // we return this node because it contains all necessary data
+        }
+    }
+    
+    public function isAWord(){
+        return $this->is_a_word;
+    }
+    
+    public function numberOfChildren(){
+        return count($this->children);
+    }
+    
 }
 
 class Trie implements Vocabulary {
@@ -61,15 +85,23 @@ class Trie implements Vocabulary {
     }
     
     public function isPrefix($prefix){
-        
+        $node = $this->head->find($prefix);
+        if(!empty($node)){
+            if($node->numberOfChildren() > 0){
+                return true;
+            }
+        }
+        return false;
     }
     
     public function contains($word){
-        
+        $node = $this->head->find($prefix);
+        if(!empty($node)){
+            if($node->isAWord()){
+                return true;
+            }
+        }
+        return false;
     }
-    
-    
-    
-    // store children reference in a hash table
-    
 }
+
