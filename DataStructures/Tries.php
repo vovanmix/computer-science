@@ -55,15 +55,13 @@ class TrieNode {
                 $remaining_word = substr($word, 1);
                 return $this->children[$letter]->find($remaining_word);
             }
-            else{
-                return false;
-            }
         }
         else{ //this is the last letter of the word
             if(isset($this->children[$letter])){
                 return $this->children[$letter]; // we return that node because it contains all necessary data
             }
         }
+        return false;
     }
     
     public function isAWord(){
