@@ -1,7 +1,5 @@
 <?php
 
-<?php
-
 # a tree where each node could have as much children as there are 
 # possible values in the datatype (a-z for letters, 0-9 for numbers etc)
 
