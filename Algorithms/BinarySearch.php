@@ -4,6 +4,9 @@
 # Time Complexity:
 # Binary Search: O(log(n))
 # Linear (Brute Force):	O(n)
+#
+# Animation:
+# https://www.cs.usfca.edu/~galles/visualization/Search.html
 
 function binary_search($needle, $haystack){
     $left = 0;
