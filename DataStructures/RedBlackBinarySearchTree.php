@@ -9,6 +9,17 @@
 #
 # the tree should be reformated on every insertion / update : recoloring of nodes, rotation. It should keep the same retreival order
 # as before
+#
+# The successor of a node of value X is the node of the tree whose value is the least that is greater than X
+# The predecessor of a node of value X is a node of the tree whose value is the greatest that is less than X
+# Each is easy to find: just do a depth first search on leftmost child, in the case of successor, and 
+# rightmost child, in the case of predecessor. The search ends when a leftmost or rightmost child does not exist
+#
+# print order: all leftmost children, after the node, after the right children, recursively
+#
+# http://gauss.ececs.uc.edu/RedBlack/redblack.html
+#
+# https://www.cs.usfca.edu/~galles/visualization/RedBlack.html
 
 
 class RBNode {
@@ -577,4 +588,4 @@ foreach($values as $key => $value){
 }
 
 $tree->printTree();
-print_r( $tree->findKey(1000) );
+echo $tree->findKey(1000)->value;
