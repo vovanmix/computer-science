@@ -6,7 +6,9 @@
 # we swap it with the parent, and then with it's parent
 # Min heap: lowest key at the top, Max heap: biggest key at the top
 # Very useful for implementing Priority queues
-
+#
+# Animation:
+# https://www.cs.usfca.edu/~galles/visualization/Heap.html
 
 // Modified version of http://www.sitepoint.com/data-structures-3/
 
