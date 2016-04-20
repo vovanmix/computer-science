@@ -1,5 +1,8 @@
 <?php
 
+# Animation:
+# https://www.cs.usfca.edu/~galles/visualization/ComparisonSort.html
+
 function mergeSortedArrays($a, $b){
     $n = count($a) + count($b);
     $output = [];
