@@ -396,36 +396,37 @@ class RBTree {
     
 
     /**
-     * Do a binary tree insert
+     * Do a binary tree insert, basic insertion based on comparison of kay values
      * @param  RbNode
      */
-    protected function binaryTreeInsert( RBNode $z ) {
+    protected function binaryTreeInsert( RBNode $newNode ) {
 
         $nil = $this->nil;
 
         // Even though at instantiation, these are set to nil - make sure they still are ;-)
-        $z->left = $z->right = $nil;
+        $newNode->left = $newNode->right = $nil;
 
-        $y = $this->root;
-        $x = $this->root->left;
+        $nodeToAppendTo = $this->root;
+        $checkingNode = $this->root->left;
 
-        while ( $x !== $nil ) {
-            $y = $x;
-            if ( $this->compare( $x->key, $z->key ) === 1 ) {
-                $x = $x->left;
+        //go down to the leaf where we can append the node
+        while ( $checkingNode !== $nil ) {
+            $nodeToAppendTo = $checkingNode;
+            if ( $this->compare( $checkingNode->key, $newNode->key ) === 1 ) {
+                $checkingNode = $checkingNode->left;
             }
             else {
-                $x = $x->right;
+                $checkingNode = $checkingNode->right;
             }
         }
 
-        $z->parent = $y;
+        $newNode->parent = $nodeToAppendTo;
 
-        if ( ( $y === $this->root ) || ( $this->compare( $y->key, $z->key ) === 1 ) ) {
-            $y->left = $z;
+        if ( ( $nodeToAppendTo === $this->root ) || ( $this->compare( $nodeToAppendTo->key, $newNode->key ) === 1 ) ) {
+            $nodeToAppendTo->left = $newNode;
         }
         else {
-            $y->right = $z;
+            $nodeToAppendTo->right = $newNode;
         }
 
         if ( $this->debug ) {
