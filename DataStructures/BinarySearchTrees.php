@@ -7,7 +7,9 @@
 # Structure of a tree depends completely on the order of filling.
 # Unbalanced tree - when one branch has much more childs than others, 
 # and search of values located in that branch will take significantly more time.
-
+#
+# Animation:
+# https://www.cs.usfca.edu/~galles/visualization/BST.html
 
 class TreeNode{
     
