@@ -10,6 +10,10 @@
 # the tree should be reformated on every insertion / update : recoloring of nodes, rotation. It should keep the same retreival order
 # as before
 #
+# if both child and parent are red, push blackness down from grandparent
+# rotate if both and parent are the only children of the same side (rotate left for right children, right for left)
+# many other resons for rotation, can rotate parent nodes up to the root
+#
 # The successor of a node of value X is the node of the tree whose value is the least that is greater than X
 # The predecessor of a node of value X is a node of the tree whose value is the greatest that is less than X
 # Each is easy to find: just do a depth first search on leftmost child, in the case of successor, and 
