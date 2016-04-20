@@ -3,6 +3,10 @@
 # First in, first out (FIFO)
 # Abstract data type
 # methods put, shift
+#
+# Animation:
+# Array: https://www.cs.usfca.edu/~galles/visualization/QueueArray.html
+# LinkedList: https://www.cs.usfca.edu/~galles/visualization/QueueLL.html
 
 $q = new SplQueue();
 $q->enqueue(1);
