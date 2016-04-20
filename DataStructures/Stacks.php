@@ -4,6 +4,9 @@
 # Abstract data type
 # 3 methods: push, pop, peek
 # Could be implemented depending of a language natively, with a list or array behind the curtain
+# Animation:
+# LinkedList: https://www.cs.usfca.edu/~galles/visualization/StackLL.html
+# Array: https://www.cs.usfca.edu/~galles/visualization/StackArray.html
 
 $a = new SplStack();
 $a->push('1');
