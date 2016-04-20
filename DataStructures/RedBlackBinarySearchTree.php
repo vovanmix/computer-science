@@ -173,7 +173,7 @@ class RBTree {
         $root = $this->root;
 
         if ( $x !== $this->nil ) {
-            $this->inorderTreePrint( $tree, $x->left );
+            $this->inorderTreePrint( $x->left );
 
             echo "info=  key=".var_export( $x->key, true );
 
@@ -421,14 +421,14 @@ class RBTree {
 
         $z->parent = $y;
 
-        if ( ( $y === $tree->root ) || ( $this->compare( $y->key, $z->key ) === 1 ) ) {
+        if ( ( $y === $this->root ) || ( $this->compare( $y->key, $z->key ) === 1 ) ) {
             $y->left = $z;
         }
         else {
             $y->right = $z;
         }
 
-        if ( $this->DEBUG ) {
+        if ( $this->debug ) {
             assert( $this->nil->color === RBNode::COLOR_BLACK );
         }
     }
@@ -528,7 +528,7 @@ class RBTree {
      */
     protected function compare( $key1, $key2 )
     {
-        if ( !is_scalar( $key1 ) || is_bool( $key1 ) || !is_scalar( $key2 ) || is_bool( $key2 ) )
+        if (is_bool( $key1 ) || is_bool( $key2 ) )// || !is_scalar( $key2 ) !is_scalar( $key1 ) || 
             throw new InvalidArgumentException( __METHOD__.'() keys must be a string or numeric' );
 
         $returnValue = null;
@@ -562,3 +562,18 @@ class RBTree {
     }
     
 }
+
+$tree = new RBTree();
+$values = [
+    50=>"first",25=>"second",100=>"third",10=>"fourth",30=>"fifth",
+    1000=>"sixth",75=>"seventh",2000=>"eighth",3000=>"nineth"
+];
+foreach($values as $key => $value){
+    $newNode = new RBNode();
+    $newNode->key = $key;
+    $newNode->value = $value;
+    $tree->insert($newNode);
+}
+
+$tree->printTree();
+print_r( $tree->findKey(1000) );
