@@ -1,5 +1,9 @@
 <?php
 
+# Animation:
+# BFS: https://www.cs.usfca.edu/~galles/visualization/BFS.html
+# Dijkstra: https://www.cs.usfca.edu/~galles/visualization/Dijkstra.html
+
 # Finding the Shortest-Path in a weightened graph
 # this is a variation of the breadth-first search
 
