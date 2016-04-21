@@ -42,4 +42,6 @@ Strings:
 - search for a subscring is demanding, especially with multichar wildcards
 
 
+In a basic question it's unnecessary to make a mathimatically accurate result.
+For a recursion tree where each node is a call the worst time could be [a size of base (lowest level)] * [number of levels] * [complexity of each call]
 
