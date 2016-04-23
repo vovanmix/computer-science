@@ -3,7 +3,7 @@
 # Animation:
 # BFS: https://www.cs.usfca.edu/~galles/visualization/BFS.html
 # Dijkstra: https://www.cs.usfca.edu/~galles/visualization/Dijkstra.html
-# Time complexity: O(N)
+# Time complexity: O(N + m) // nodes and edges
 
 # Finding the Shortest-Path in a weightened graph
 # this is a variation of the breadth-first search
