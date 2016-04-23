@@ -3,6 +3,10 @@
 # First in, first out (FIFO)
 # Abstract data type
 # methods put, shift
+# 
+# Time complexity:
+# insert: O(1)
+# find (next): O(1)
 #
 # Animation:
 # Array: https://www.cs.usfca.edu/~galles/visualization/QueueArray.html
