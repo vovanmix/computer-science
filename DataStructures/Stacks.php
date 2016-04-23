@@ -4,6 +4,10 @@
 # Abstract data type
 # 3 methods: push, pop, peek
 # Could be implemented depending of a language natively, with a list or array behind the curtain
+# 
+# Time complexity:
+# insert: O(1)
+# find (next): O(1)
 #
 # Animation:
 # LinkedList: https://www.cs.usfca.edu/~galles/visualization/StackLL.html
