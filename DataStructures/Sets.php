@@ -4,6 +4,11 @@
 # No duplicates (cannot add the same value twice)
 # Designed for fast lookup to understand if the specific object is already in the collection (no get etc, just check)
 # Usually uses the hash table. Hash is taken from the value
+#
+# Time Complexity: (same as hash table)
+# insert: O(1) AVG O(n) WORST
+# find: O(1) AVG O(n) WORST
+#
 # Methods: contains()
 
 class Set {
