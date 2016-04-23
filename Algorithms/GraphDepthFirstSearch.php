@@ -12,7 +12,7 @@
 # The basic concept is to visit a node, then push all of the nodes to be visited onto the stack. 
 # To find the next node to visit we simply pop a node of the stack
 
-# Time complexity: O(N)
+# Time complexity: O(N + m) // nodes and edges
 
 # Animation:
 # https://www.cs.usfca.edu/~galles/visualization/DFS.html
