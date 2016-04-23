@@ -21,6 +21,10 @@
 #
 # print order: all leftmost children, after the node, after the right children, recursively
 #
+# Time Complexity:
+# insert: O(log n)
+# find: O(log n)
+#
 # http://gauss.ececs.uc.edu/RedBlack/redblack.html
 #
 # Animation:
