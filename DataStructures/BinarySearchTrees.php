@@ -8,6 +8,10 @@
 # Unbalanced tree - when one branch has much more childs than others, 
 # and search of values located in that branch will take significantly more time.
 #
+# Time complexity:
+# insert: O(n log n) AVG - O(n) WORST
+# find: O(n log n) AVG - O(n) WORST
+#
 # Animation:
 # https://www.cs.usfca.edu/~galles/visualization/BST.html
 
