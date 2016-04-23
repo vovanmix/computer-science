@@ -5,6 +5,10 @@
 # Multiple keys could have the same hash, and we store some other structure in each cell (bucket) like a linked list
 # It's fast to find a value because we jump to the cell and then loop throug the snall list
 # Associative arrays or dictionaries are hash tables, sometimes extended with some additional traits
+# 
+# Time complexity:
+# insert: O(1) AVG - O(n) WORST
+# find: O(1) AVG - O(n) WORST
 #
 # Animation:
 # https://www.cs.usfca.edu/~galles/visualization/OpenHash.html
