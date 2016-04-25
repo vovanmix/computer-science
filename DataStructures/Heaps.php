@@ -9,7 +9,8 @@
 # 
 # Time complexity:
 # insert: O(log n)
-# find (top): O(1)
+# find (top) peek: O(1)
+# extract: O(log n)
 #
 # Animation:
 # https://www.cs.usfca.edu/~galles/visualization/Heap.html
