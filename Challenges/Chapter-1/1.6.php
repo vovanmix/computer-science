@@ -1,5 +1,7 @@
 <?php
 
+# :2
+
 function compress($string){
 	
 	# can optimize by precounting the size of the compressed string, but the time complexity 
