@@ -53,6 +53,7 @@ class StringBuilder {
 	public function combine(){ //O(n)
 
 		if(count($this->array) > 0){
+			// $string = implode('', $this->array);
 			$string = $this->array[0];
 			$index = strlen($string);
 			for($i = 1; $i < count($this->array); $i++){ //O(n)
