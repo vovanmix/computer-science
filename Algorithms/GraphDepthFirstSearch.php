@@ -1,5 +1,7 @@
 <?php
 
+# usually need this to fetch/traverse all nodes, bad suite to find anything
+
 # start with retreiving all child nodes of the first node and all it's child nodes till the end
 
 # Depth First Traversal (or Search) for a graph is similar to Depth First Traversal of a tree. The only catch here is, 
