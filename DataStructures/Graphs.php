@@ -18,6 +18,15 @@
 
 //http://www.sitepoint.com/data-structures-4/
 
+# better to define as classes not arrays, like:
+class GraphNode {
+  protected $adjacent = []; //instances of GraphNode
+}
+// need this because not necessarily all nodes aro interconnected
+class Graph {
+  protected $nodes = []; //instances of GraphNode
+}
+
 # Adjacency List:
 $graph = array(
   'A' => array('B', 'F'),
