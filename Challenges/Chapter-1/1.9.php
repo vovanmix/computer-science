@@ -2,6 +2,8 @@
 
 # string rotation
 
+# :3
+
 function isSubstring($needle, $haystack){
   //todo
   // return true
