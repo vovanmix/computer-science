@@ -1,5 +1,9 @@
 <?php
 
+#useful to find something in children, like the shortest path
+
+# uses queue
+
 # Adjacency List:
 $graph = array(
   'A' => array('B', 'F'),
