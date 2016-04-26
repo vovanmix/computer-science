@@ -10,34 +10,30 @@ function getKthNode(ListNode $node, $k){
   return $first_list_pointer;
 }
 
+function getTailAndSize($current){
+  $tail = null;
+  $size = 0;
+  while($current != null){
+    $current = $current->next;
+    $tail = $current;
+    $size ++;
+  }
+  return compact('tail', 'size');
+}
+
 function findIntersection(SinglyLinkedList $list1, SinglyLinkedList $list2){
   
   //traverse each of them till the end, if they have the same tail, they intersect
   //traverse them in parallel from lenLongest-lenSmallest, comparing nodes on each
   
-  $current = $list1->head;
-  $previous1 = null;
-  $list1_nodes = 0;
-  while($current != null){
-    $current = $current->next;
-    $previous1 = $current;
-    $list1_nodes ++;
-  }
+  $list1_results = getTailAndSize($list1->head);
+  $list2_results = getTailAndSize($list2->head);
   
-  $current = $list2->head;
-  $previous2 = null;
-  $list2_nodes = 0;
-  while($current != null){
-    $current = $current->next;
-    $previous2 = $current;
-    $list2_nodes ++;
-  }
-  
-  if($previous2 == $previous1){ // they do intersect
-    $skip = abs($list1_nodes - $list2_nodes);
+  if($list1_results['tail'] == $list2_results['tail']){ // they do intersect
+    $skip = abs($list1_results['size'] - $list2_results['size']);
     
-    $longest_list = $list2_nodes >= $list1_nodes ? $list2 : $list1;
-    $shortest_list = $list2_nodes >= $list1_nodes ? $list1 : $list2;
+    $longest_list = $list2_results['size'] >= $list1_results['size'] ? $list2 : $list1;
+    $shortest_list = $list2_results['size'] >= $list1_results['size'] ? $list1 : $list2;
     
     $first_list_pointer = getKthNode($longest_list->head, $skip);
     $second_list_pointer = $shortest_list->head;
