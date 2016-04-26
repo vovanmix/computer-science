@@ -56,9 +56,9 @@ class Stack {
   
   //int
   public function pop($stack){
-    $first_value = $this->array[$start];
     $start = $this->getStackStartIndex($stack);
     $last = $this->stack_size + $start - 1;
+    $first_value = $this->array[$start];
     for($i = $start; $i < $last ; $i ++){
       $this->array[$i] = $this->array[$i+1];
     }
@@ -96,5 +96,5 @@ echo $stackStruct->pop(0)."\r\n";
 print_r($stackStruct);
 
 //Brute force:
-//Final:
+//Final: push O(n) pop O(n)
 //BCR:
