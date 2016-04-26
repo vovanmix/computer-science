@@ -2,15 +2,15 @@
 
 # intersection
 
-function getKthNode(ListNode $node, $k){
+function getKthNode(ListNode $current, $k){
   while($k > 0){
-      $first_list_pointer = $first_list_pointer->next;
+      $current = $current->next;
       $k--;
     }
-  return $first_list_pointer;
+  return $current;
 }
 
-function getTailAndSize($current){
+function getTailAndSize(ListNode $current){
   $tail = null;
   $size = 0;
   while($current != null){
