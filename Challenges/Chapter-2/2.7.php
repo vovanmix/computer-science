@@ -2,6 +2,14 @@
 
 # intersection
 
+function getKthNode(ListNode $node, $k){
+  while($k > 0){
+      $first_list_pointer = $first_list_pointer->next;
+      $k--;
+    }
+  return $first_list_pointer;
+}
+
 function findIntersection(SinglyLinkedList $list1, SinglyLinkedList $list2){
   
   //traverse each of them till the end, if they have the same tail, they intersect
@@ -26,20 +34,12 @@ function findIntersection(SinglyLinkedList $list1, SinglyLinkedList $list2){
   }
   
   if($previous2 == $previous1){ // they do intersect
-    if($list2_nodes >= $list1_nodes){
-      $longest_list = $list2;
-      $shortest_list = $list1;
-      $skip = $list2_nodes - $list1_nodes;
-    }else{
-      $longest_list = $list1;
-      $shortest_list = $list2;
-      $skip = $list1_nodes - $list2_nodes;
-    }
-    $first_list_pointer = $longest_list->head;
-    while($skip > 0){
-      $first_list_pointer = $first_list_pointer->next;
-      $skip--;
-    }
+    $skip = abs($list1_nodes - $list2_nodes);
+    
+    $longest_list = $list2_nodes >= $list1_nodes ? $list2 : $list1;
+    $shortest_list = $list2_nodes >= $list1_nodes ? $list1 : $list2;
+    
+    $first_list_pointer = getKthNode($longest_list->head, $skip);
     $second_list_pointer = $shortest_list->head;
     
     while($first_list_pointer != $second_list_pointer){
