@@ -11,7 +11,7 @@ interface LinkedListNodeInterface{
     //public $next;
 }
 
-function removeDuplicates(LinkedList $list){
+function removeDuplicates(LinkedList &$list){
   
   //Questions:
   // should I create a list implementation? - no
@@ -52,6 +52,8 @@ $list->add(2);
 $list->add(1);
 $list->add(11);
 
+removeDuplicates($list);
+var_dump($list);
 
 //Brute force: O(n) Space O(n)
 //Final: 
