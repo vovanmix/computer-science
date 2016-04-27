@@ -20,7 +20,7 @@ class Graph{
   public $nodes = [];
 }
 
-function setStatusesToBlank(Graph $graph){
+function setStatusesToBlank(Graph $graph){ // O(n)
   foreach($graph->nodes as $node){
     if($node->status !== STATUS_VISITED){
       $node->status = STATUS_BLANK;
@@ -28,20 +28,21 @@ function setStatusesToBlank(Graph $graph){
   }
 }
 
-function runDFS($node, $order){
-  if($node->status == STATUS_BLANK){
+function runDFS(GraphNode $node, SplStack $order){ // O(m)
+  if($node->status === STATUS_BLANK){
     $node->status = STATUS_PROCESSING;
     foreach($node->adjacent as $adjacent){
-      runDFS($node, $order);
+      runDFS($adjacent, $order);
     }
-    $order->unshift($node->name);
+    $order->push($node->name);
+    $node->status = STATUS_VISITED;
   }
 }
 
 function findProjectsOrder(Graph $graph){
-    $order = new ArrayObject();
+    $order = new SplStack;
     $nodes = $graph->nodes;
-    foreach($graph->nodes as $node){
+    foreach($graph->nodes as $node){ //O(n)
       setStatusesToBlank($graph);
       runDFS($node, $order);
     }
@@ -68,7 +69,12 @@ $nodeF->adjacent = [$nodeH];
 $nodeG->adjacent = [];
 $nodeH->adjacent = [];
 
-$graph = mew Graph();
+$graph = new Graph();
 $graph->nodes = [$nodeA, $nodeB, $nodeC, $nodeD, $nodeE, $nodeF, $nodeG, $nodeH];
 
 $order = findProjectsOrder($graph);
+$order->rewind();
+while($order->valid()){
+    echo "{$order->current()} , ";
+    $order->next();
+}
