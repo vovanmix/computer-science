@@ -70,7 +70,7 @@ class AnimalShelter implements AnimalShelterInterface {
       return $cat;
     }
     else{
-      $return $dog;
+      return $dog;
     }
   }
   
