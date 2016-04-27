@@ -23,7 +23,7 @@ function findRoute(GraphNode $nodeA, GraphNode $nodeB){
     $queue->enqueue($node);
   }
   
-  while($queue->count()){ //->valid()
+  while(!$queue->isEmpty()){
     $node = $queue->dequeue();
     if(!$node->visited){
       if($node == $nodeB){
@@ -32,7 +32,6 @@ function findRoute(GraphNode $nodeA, GraphNode $nodeB){
       $node->visited = true;
       foreach($node->adjacent as $adjacent){
         $queue->enqueue($adjacent);
-        //$queue->rewind();
       }
     }
   }
