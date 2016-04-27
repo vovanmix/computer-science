@@ -9,6 +9,10 @@ class Graph {
 class GraphNode {
   public $adjacent = [];
   public $visited = false;
+  public $name;
+  public function __construct($name){
+      $this->name = $name;
+  }
 }
 
 function findRoute(GraphNode $nodeA, GraphNode $nodeB){
@@ -19,7 +23,7 @@ function findRoute(GraphNode $nodeA, GraphNode $nodeB){
     $queue->enqueue($node);
   }
   
-  while($queue->top()){ //->valid()
+  while($queue->count()){ //->valid()
     $node = $queue->dequeue();
     if(!$node->visited){
       if($node == $nodeB){
@@ -28,6 +32,7 @@ function findRoute(GraphNode $nodeA, GraphNode $nodeB){
       $node->visited = true;
       foreach($node->adjacent as $adjacent){
         $queue->enqueue($adjacent);
+        //$queue->rewind();
       }
     }
   }
@@ -36,14 +41,14 @@ function findRoute(GraphNode $nodeA, GraphNode $nodeB){
   
 }
 
-$nodeA = new GraphNode();
-$nodeB = new GraphNode();
-$nodeC = new GraphNode();
-$nodeD = new GraphNode();
-$nodeE = new GraphNode();
-$nodeF = new GraphNode();
-$nodeG = new GraphNode();
-$nodeH = new GraphNode();
+$nodeA = new GraphNode('A');
+$nodeB = new GraphNode('B');
+$nodeC = new GraphNode('C');
+$nodeD = new GraphNode('D');
+$nodeE = new GraphNode('E');
+$nodeF = new GraphNode('F');
+$nodeG = new GraphNode('G');
+$nodeH = new GraphNode('H');
 
 $nodeA->adjacent = [$nodeB, $nodeC];
 $nodeB->adjacent = [$nodeC, $nodeD];
@@ -53,5 +58,5 @@ $nodeD->adjacent = [$nodeE];
 $nodeG->adjacent = [$nodeF, $nodeH];
 $nodeH->adjacent = [$nodeG];
 
-var_dump(findRoute($nodeA, $nodeH));
+//var_dump(findRoute($nodeA, $nodeH));
 var_dump(findRoute($nodeA, $nodeE));
