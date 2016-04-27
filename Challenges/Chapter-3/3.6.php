@@ -3,14 +3,13 @@
 # animal shelter
 
 abstract class Animal{
-    protected $time;
-    
+  protected $time;
+  
   public function recordTime(){
     $this->time = time();
   }
   public function getTime(){
       return $this->time;
-  
   }
 };
 class Dog extends Animal{
