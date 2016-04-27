@@ -63,4 +63,4 @@ $nodeH->adjacent = [$nodeG];
 var_dump(findRoute($nodeA, $nodeE));
 
 
-// O(n)
+// O(n + k), k - edges
