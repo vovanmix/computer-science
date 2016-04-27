@@ -93,3 +93,9 @@ if(!empty($order)){
 else{
     echo "none found";
 }
+
+
+// O(n + m) , m - number of edges
+// because we visit each node not more than once
+// the same runtime as in DFS because we use it slightly modified
+// DFS because it's more easy than BFS and allows to use recursion
