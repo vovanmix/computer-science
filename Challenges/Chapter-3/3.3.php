@@ -5,9 +5,9 @@
 interface SetOfStacksInterface {
   //composed of several stacks
 
-  public function push($value){};
-  public function pop(){};
-  public function popAt($stackIndex){};
+  public function push($value);
+  public function pop();
+  public function popAt($stackIndex);
 }
 
 class SetOfStacks implements SetOfStacksInterface {
@@ -20,6 +20,7 @@ class SetOfStacks implements SetOfStacksInterface {
   //int
   public function __construct($limit){
     $this->limit = $limit;
+    $this->stacks = [0 => new SplStack()];
     $this->sizes = [0 => 0];
   }
   
@@ -28,12 +29,13 @@ class SetOfStacks implements SetOfStacksInterface {
     
     $this->sizes[$this->current_stack] ++;
     $stack->push($value);
-  };
+  }
   
   protected function getStackToPush(){
     if($this->sizes[$this->current_stack] >= $this->limit){ // move to a new stack
       $this->current_stack ++;
       $this->stacks[$this->current_stack] = new SplStack();
+      $this->sizes[$this->current_stack] = 0;
     }
     
     return $this->stacks[$this->current_stack];
@@ -51,7 +53,7 @@ class SetOfStacks implements SetOfStacksInterface {
     $stack = $this->getStackToPop();
     $this->sizes[$this->current_stack] --;
     return $stack->pop();
-  };
+  }
   
   public function popAt($stackIndex){ //O(1)
     if($this->sizes[$stackIndex] > 0 ){
@@ -62,7 +64,7 @@ class SetOfStacks implements SetOfStacksInterface {
     else{
       return -1;
     }
-  };
+  }
 }
 
 $stack = new SetOfStacks(2);
@@ -76,6 +78,8 @@ $stack->push(7);
 $stack->push(8);
 $stack->push(9);
 
+print_r($stack);
+
 echo $stack->pop()."\r\n";
 echo $stack->pop()."\r\n";
 echo $stack->pop()."\r\n";
@@ -85,6 +89,8 @@ echo $stack->pop()."\r\n";
 echo $stack->pop()."\r\n";
 echo $stack->pop()."\r\n";
 echo $stack->pop()."\r\n";
+
+print_r($stack);
 
 // brute force:
 // final:
