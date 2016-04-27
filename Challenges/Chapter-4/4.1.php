@@ -2,6 +2,8 @@
 
 # route between nodes
 
+//just a Depth First search
+
 class Graph {
   public $nodes = [];
 }
@@ -59,3 +61,6 @@ $nodeH->adjacent = [$nodeG];
 
 //var_dump(findRoute($nodeA, $nodeH));
 var_dump(findRoute($nodeA, $nodeE));
+
+
+// O(n)
