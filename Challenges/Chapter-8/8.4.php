@@ -28,3 +28,4 @@ function convertMaskToSubSet($set, $dec_mask){
 print_r(getAllSubsets(['a', 'b', 'c']));
 
 // O(n * pow(2, n))
+// space O(n * pow(2, n))
