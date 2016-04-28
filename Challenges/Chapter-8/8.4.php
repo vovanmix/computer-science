@@ -27,4 +27,4 @@ function convertMaskToSubSet($set, $dec_mask){
 
 print_r(getAllSubsets(['a', 'b', 'c']));
 
-// O(pow(2, n))
+// O(n * pow(2, n))
