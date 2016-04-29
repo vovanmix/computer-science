@@ -1,6 +1,7 @@
 <?php
 
 # Time complexity: O(N log N)
+# Space complexity: O(3n) = O(n)
 
 # Animation:
 # https://www.cs.usfca.edu/~galles/visualization/ComparisonSort.html
