@@ -19,7 +19,7 @@ class Permutations{
          }
          $hm[$chr] ++;
       }
-	  return $hm;
+      return $hm;
   }
   
   protected static function getPerms($map, $prefix, $remaining, &$result){
