@@ -3,7 +3,6 @@
 
 import collections
 import Queue
-from pprint import pprint
 
 def node_factory(value):
     return Node(value)
@@ -40,6 +39,8 @@ class Solution():
         ans = self.findDistances(N[start], nodes, cost)
         print " ".join(ans)
     
+    #n - nodes, e - edges
+    #Time O(n + e), Space O(e + n)
     def findDistances(self, node, nodes, cost):
         
         q = Queue.Queue()
