@@ -2,19 +2,6 @@ import sys
 
 class Solution():
     
-    def _val(self, char):
-        return ord(char)
-
-    def _compare(self, a, b):
-        oa = self._val(a)
-        ob = self._val(b)
-        if oa < ob:
-            return -1
-        elif oa > ob:
-            return 1
-        else:
-            return 0
-    
     def _split(self, word):
         j = len(word) - 1
         while(j > 0 and word[j-1] >= word[j]):
